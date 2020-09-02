@@ -1,0 +1,76 @@
+﻿// ITP_1_10_D.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
+//
+
+#include <iostream>
+#include <vector>
+#include <math.h>
+
+using namespace std;
+
+int easyAbs(int num) {
+    if (num > 0)
+        return num;
+    else
+        return -num;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<int> vX, vY;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        vX.push_back(x);
+    }
+
+    for (int i = 0; i < n; i++) {
+        int y;
+        cin >> y;
+        vY.push_back(y);
+    }
+
+    double D1{ 0.0 };
+    for (int i = 0; i < n;i++) {
+        D1 += easyAbs(vX.at(i) - vY.at(i));
+    }
+
+    double D2{ 0.0 };
+    for (int i = 0; i < n; i++) {
+        int div = easyAbs(vX.at(i) - vY.at(i));
+        D2 += div * div;
+    }
+    D2 = sqrt(D2);
+
+    double D3{ 0.0 };
+    for (int i = 0; i < n; i++) {
+        int div = easyAbs(vX.at(i) - vY.at(i));
+        D3 += div * div * div;
+    }
+    D3 = pow(D3, 1.0/3.0);
+
+    double Di{ 0.0 };
+    for (int i = 0; i < n; i++) {
+        int div = easyAbs(vX.at(i) - vY.at(i));
+        if (Di < div) Di = (double)div;
+    }
+
+    printf("%0.6lf\n", D1);
+    printf("%0.6lf\n", D2);
+    printf("%0.6lf\n", D3);
+    printf("%0.6lf\n", Di);
+}
+
+// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
+// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
+
+// 作業を開始するためのヒント: 
+//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
+//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
+//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
+//   4. エラー一覧ウィンドウを使用してエラーを表示します
+//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
+//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します
