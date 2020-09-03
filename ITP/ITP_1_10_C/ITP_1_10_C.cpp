@@ -8,16 +8,15 @@ using namespace std;
 
 int main()
 {
-    vector<double> vSD;
     while (1) {
         int n{ 0 };
         cin >> n;
         if (n == 0) break;
         
-        int sum{ 0 };
-        vector<int> vScore;
+        double sum{ 0 };
+        vector<double> vScore;
         for (int i = 0; i < n; i++) {
-            int s{ 0 };
+            double s{ 0 };
             cin >> s;
             vScore.push_back(s);
             sum += s;
@@ -28,14 +27,8 @@ int main()
         for (auto e : vScore) {
             work += (e - avg) * (e - avg);
         }
-        double variance = work / n;
-
-        vSD.push_back(sqrt(variance));
+        printf("%.8lf\n", sqrt(work / n));
     }
-    for (auto e : vSD) {
-        printf("%0.8lf\n", e);
-    }   
-
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
